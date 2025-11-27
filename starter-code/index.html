@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <title>Character counter</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-wrapper">
+        <img
+          src="./assets/images/logo-light-theme.svg"
+          alt="Character Counter Logo"
+          class="logo"
+        />
+      </div>
+
+      <div class="theme-toggler-wrapper" id="theme-toggler">
+        <img
+          src="./assets/images/icon-moon.svg"
+          alt="Theme Icon"
+          title="Toogle theme"
+        />
+      </div>
+    </header>
+
+    <div class="hero-title-wrapper">
+      <p>
+        Analyze your text <span class="nowrap">in real-time.</span>
+      </p>
+    </div>
+
+    <main>
+      <section class="textarea-wrapper">
+        <textarea
+          name=""
+          id=""
+          placeholder="Start typing here… (or paste your text)"
+        ></textarea>
+
+        <div class="options-wrapper">
+          <div class="options">
+            <div class="option">
+              <input id="exclude-spaces" type="checkbox" />
+              <label for="exclude-spaces">Exclude Spaces</label>
+            </div>
+            
+            <div class="option">
+              <input id="set-character-limit" type="checkbox" />
+              <label for="set-character-limit">Set Character Limit</label>
+            </div>
+            
+          </div>
+          <div class="reading-time-wrapper">
+            <span class="reading-time-label"
+              >Approx. reading time: 0 minute
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- stats and density section -->
+      <section class="stats-density-wrapper">
+       
+        <div class="stats-wrapper">
+           <!-- total characters stat -->
+          <div class="stat-wrapper purple">
+            <div class="stat">
+              <p class="stat-value">00</p>
+              <p class="stat-title">Total Characters</p>
+            </div>
+            <div class="stat-shape">
+              <img src="./assets/images/pattern-character-count.svg" alt="" />
+            </div>
+          </div>
+
+          <!-- total word count stat -->
+          <div class="stat-wrapper yellow">
+            <div class="stat">
+              <p class="stat-value">00</p>
+              <p class="stat-title">Word Count</p>
+            </div>
+            <div class="stat-shape">
+              <img src="./assets/images/pattern-word-count.svg" alt="" />
+            </div>
+          </div>
+
+          <!-- total sentence stat -->
+          <div class="stat-wrapper orange">
+            <div class="stat">
+              <p class="stat-value">00</p>
+              <p class="stat-title">Sentence Count</p>
+            </div>
+            <div class="stat-shape">
+              <img src="./assets/images/pattern-sentence-count.svg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="letter-density-wrapper">
+          <h2>Letter Density</h2>
+
+          <span>No characters found. Start typing to see letter density.</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

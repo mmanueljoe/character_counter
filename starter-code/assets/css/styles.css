@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+/* reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* general styles */
+body {
+  min-height: 100vh;
+}
+
+/* custom styles */
+:root {
+  /* font */
+
+  /* colors */
+  --neutral-0: #ffffff;
+  --neutral-100: #f2f2f7;
+  --neutral-200: #e4e4ef;
+  --neutral-600: #404254;
+  --neutral-700: #2a2b37;
+  --neutral-800: #21222c;
+  --neutral-900: #12131a;
+
+  --blue-400: #d3a0fa;
+  --blue-500: #c27cf8;
+
+  --yellow-500: #ff9f00;
+
+  --orange-500: #fe8159;
+  --orange-800: #da3701;
+
+  /* typography */
+  --font-family: "DM sans", sans-serif;
+  --font-weight: 700;
+  --font-size: 2.5rem;
+  --line-height: 1;
+  --letter-spacing: -0.0625rem;
+
+  /* text preset 1 (bold)*/
+  --text-preset-1-size: 4rem;
+  --text-preset-1-line-height: 1;
+  --text-preset-1-spacing: -0.0625rem;
+  --text-preset-1-weight: 700;
+  
+  /* text preset 1 (mobile) bold*/
+  --text-preset-1-mb-size: 2.5rem;
+  --text-preset-1-mb-line-height: 1;
+  --text-preset-1-mb-spacing: -0.0625rem;
+  --text-preset-1-mb-weight: 700;
+
+  /* text preset 2 semibold */
+  --text-preset-2-size: 1.5rem;
+  --text-preset-2-line-height: 1.3;
+  --text-preset-2-spacing: -0.0625rem;
+  --text-preset-2-weight: 500;
+
+  /* text preset 3 regular */
+  --text-preset-3-size: 1.25rem;
+  --text-preset-3-line-height: 1.4;
+  --text-preset-3-spacing: -0.0375rem;
+  --text-preset-3-weight: 400;
+
+  /* text preset 4 regular */
+  --text-preset-4-size: 1rem;
+  --text-preset-4-line-height: 1.3;
+  --text-preset-4-spacing: -0.0375rem;
+  --text-preset-4-weight: 400;
+
+
+
+  /* spacing */
+  --spacing-0: 0;
+  --spacing-025: 0.125rem;
+  --spacing-050: 0.25rem;
+  --spacing-075: 0.375rem;
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-250: 1.25rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-800: 4rem;
+  --spacing-1000: 5rem;
+
+  /* radius */
+  --radius-0: 0;
+  --radius-4: 0.25rem;
+  --radius-6: 0.375rem;
+  --radius-8: 0.5rem;
+  --radius-10: 0.625rem;
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+  --radius-20: 1.25rem;
+  --radius-24: 1.5rem;
+  --radius-full: 64.44rem;
+}
+
+
+body {
+  padding: var(--spacing-200);
+  background-color: var(--neutral-0);
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-line-height);
+  letter-spacing: var(--text-preset-4-spacing);
+  max-width: 100%;
+}
+
+
+/* header styles starts here */
+
+header {
+  display: flex;
+  margin-bottom: var(--spacing-200);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  max-width: 185px;
+  height: auto;
+}
+
+.theme-toggler-wrapper {
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-6);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-wrapper img {
+  width: 100%;
+  height: auto;
+  color: var(--neutral-900);
+}
+
+
+/* header styles ends here */
+
+
+/* --------------------------------- */
+
+
+
+/* hero title styles*/
+
+.hero-title-wrapper {
+  padding: var(--spacing-400) 0;
+  font-size: var(--text-preset-1-mb-size);
+  font-weight: var(--text-preset-1-mb-weight);
+  line-height: var(--text-preset-1-mb-line-height);
+  letter-spacing: var(--text-preset-1-mb-spacing);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* hero title styles ends here */
+
+
+
+/* --------------------------------- */
+
+
+
+/* textarea-wrapper section styles */
+.textarea-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  margin: var(--spacing-500) 0;
+}
+
+.textarea-wrapper textarea {
+  font-family: inherit;
+  font-size: var(--text-preset-3-size);
+  font-weight: var(--text-preset-3-weight);
+  line-height: var(--text-preset-3-line-height);
+  letter-spacing: var(--text-preset-3-spacing);
+  min-width: 345px;
+  min-height: 200px;
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
+  padding: var(--spacing-150);
+  border-radius: var(--radius-12);
+  border: 2px solid var(--neutral-200);
+}
+
+.textarea-wrapper textarea:focus {
+  outline: none;
+  border: 2px solid var(--blue-500);
+}
+
+.textarea-wrapper textarea:hover {
+  cursor: pointer;
+}
+
+.textarea-wrapper textarea::placeholder {
+  color: var(--neutral-900);
+}
+
+.textarea-wrapper .options-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-075);
+}
+
+
+.options-wrapper{
+    display: flex;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+.option input{
+    font-family: inherit;
+    border: 1px solid var(--neutral-900);
+}
+
+
+
+
+/* textarea-wrapper section styles ends here*/
+
+
+/* --------------------------------- */
+
+
+
+/* todo - create custom checkbox input */
+/* input[type="checkbox"] {
+  
+} */
+
+/* todo ends here */
+
+
+/* stats and density sections styles starts here */
+
+.stats-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  margin-bottom: var(--spacing-500);
+}
+
+.stat-wrapper{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ min-width: 343px;
+ min-height: 50px;
+ padding: var(--spacing-100);
+ border-radius: var(--radius-12);
+ overflow: hidden;
+ 
+}
+
+.purple{
+  background-color: var(--blue-400);
+}
+
+.yellow{
+  background-color: var(--yellow-500);
+}
+
+.orange{
+  background-color: var(--orange-500);
+}
+
+.stat .stat-value{
+  font-size: var(--text-preset-1-mb-size);
+  font-weight: var(--text-preset-1-mb-weight);
+  line-height: var(--text-preset-1-mb-line-height);
+  letter-spacing: var(--text-preset-1-mb-spacing);
+}
+
+.stat .stat-title{
+  font-size: var(--text-preset-3-size);
+  font-weight: var(--text-preset-3-weight);
+}
+
+.stat-shape{
+  max-width: 35%;
+  height: 100%;
+}
+
+.stat-shape img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+/* stats and density sections styles ends here */
+
+
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+  }
+}
+
+
+/* media queries for responsiveness */
+
+
+/* tablets */
+@media only screen and (min-width: 768px){
+  body {
+    padding: var(--spacing-400);
+  }
+
+  .hero-title-wrapper {
+    padding: var(--spacing-500);
+    font-size: var(--text-preset-1-size);
+    font-weight: var(--text-preset-1-weight);
+    letter-spacing: var(--text-preset-1-spacing);
+    line-height: var(--text-preset-1-line-height);
+  }
+
+  .textarea-wrapper .options-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .options-wrapper .options{
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-150);
+  }
+
+
+  .stats-wrapper{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .stat-wrapper{
+    min-width: 200px;
+    padding: var(--spacing-200) var(--spacing-150);
+  }
+
+  .stat .stat-value{
+  font-size: var(--text-preset-1-size);
+  font-weight: var(--text-preset-1-weight);
+  line-height: var(--text-preset-1-line-height);
+  letter-spacing: var(--text-preset-1-spacing);
+}
+
+.stat .stat-title{
+  font-size: var(--text-preset-3-size);
+  font-weight: var(--text-preset-3-weight);
+  line-height: var(--text-preset-3-line-height);
+}
+
+.stat-shape{
+  max-width: 30%;
+  height: 100%;
+}
+
+.stat-shape img{
+  width: 100%;
+  height: 100%;
+  min-width: 100px;
+  overflow: hidden;
+}
+
+}
+
+/* desktop */
+
+@media only screen and (min-width: 1024px){
+  body {
+    padding: var(--spacing-800);
+  }
+
+  .hero-title-wrapper {
+    padding: var(--spacing-500);
+    font-size: var(--text-preset-1-size);
+    margin: var(--spacing-600) 0;
+  }
+}
