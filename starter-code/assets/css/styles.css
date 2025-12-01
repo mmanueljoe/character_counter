@@ -20,6 +20,7 @@ html{
   --neutral-0: #ffffff;
   --neutral-100: #f2f2f7;
   --neutral-200: #e4e4ef;
+
   --neutral-600: #404254;
   --neutral-700: #2a2b37;
   --neutral-800: #21222c;
@@ -142,9 +143,9 @@ header {
 }
 
 .theme-toggler-wrapper img {
-  width: 100%;
+  display: block;
+  width: 60%;
   height: auto;
-  color: var(--neutral-900);
 }
 
 
@@ -152,7 +153,6 @@ header {
 
 
 /* --------------------------------- */
-
 
 
 .main-wrapper, .textarea-wrapper, .stats-density-wrapper{
@@ -498,7 +498,6 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   }
 }
 
-/* dark mode */
 
 /* manual dark theme (applied to <html data-theme="dark"]) */
 /*
@@ -510,48 +509,52 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
 */
 html[data-theme="dark"] {
   /* swap light background to a dark surface */
-  --neutral-0: #0b0b0f; /* page background */
-  --neutral-100: #0f1116; /* surface / textarea background */
-  --neutral-200: #1f2126; /* borders, secondary surfaces */
+  --neutral-0: #12131a; /* page background */
+  --neutral-100: #21222c; /* surface / textarea background */
+  --neutral-200: #2a2b37; /* borders, secondary surfaces */
 
   /* primary text (light in dark mode) */
   --neutral-600: #bfc3cf; /* muted text */
-  --neutral-700: #e6e6ea; /* primary body text */
+  --neutral-700: #e4e4ef; /* primary body text */
   --neutral-800: #f5f6f8; /* icons / accents */
-  --neutral-900: #ffffff; /* headings / strong text */
+  --neutral-900: #f2f2f7; /* headings / strong text */
 
-  /* accent adjustments (slightly brighter in dark theme) */
-  --blue-400: #9b6ef8;
-  --blue-500: #8250f4;
-  --yellow-500: #ffb347;
-  --orange-500: #ff8b68;
-  --orange-800: #ff5b2a;
+
+  --blue-400: #d3a0fa;
+  --blue-500: #c27cf8;
+
+  --yellow-500: #ff9f00;
+
+  --orange-500: #fe8159;
+  --orange-800: #da3701;
+
+  /* theme-aware styles */
+  body {
+    background-color: var(--neutral-0);
+    color: var(--neutral-700);
+  }
+
+  .textarea-wrapper textarea{
+    background-color: var(--neutral-100);
+    color: var(--neutral-700);
+    border: 2px solid var(--neutral-200);
+  }
+
+  .theme-toggler-wrapper{
+    background-color: var(--neutral-100);
+  }
+
+  /* make toggler icon easier to see in dark mode */
+  .theme-toggler-wrapper img{
+    display: block;
+    width: 60%;
+    height: auto;
+  }
+  
+
+  .stat-wrapper {
+    color: var(--neutral-0);
+  }
 }
 
-/* theme-aware styles */
-body {
-  background-color: var(--neutral-0);
-  color: var(--neutral-700);
-}
 
-.textarea-wrapper textarea{
-  background-color: var(--neutral-100);
-  color: var(--neutral-700);
-  border: 2px solid var(--neutral-200);
-}
-
-.theme-toggler-wrapper{
-  background-color: var(--neutral-100);
-}
-
-/* make toggler icon easier to see in dark mode */
-.theme-toggler-wrapper img{
-  display: block;
-  width: 60%;
-  height: auto;
-}
-
-/* tweak stat shapes so they blend better in dark mode */
-.stat-wrapper.purple{ background-color: var(--blue-400); }
-.stat-wrapper.yellow{ background-color: var(--yellow-500); }
-.stat-wrapper.orange{ background-color: var(--orange-500); }
