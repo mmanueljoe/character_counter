@@ -57,7 +57,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github Repository Link](https://github.com/mmanueljoe/character_counter.git)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live site](https://character-counter-tau-bay.vercel.app/)
 
 ## My process
 
