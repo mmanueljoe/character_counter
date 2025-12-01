@@ -141,7 +141,7 @@ header {
   border: none;
 }
 
-.theme-toggle-wrapper img {
+.theme-toggler-wrapper img {
   width: 100%;
   height: auto;
   color: var(--neutral-900);
@@ -251,11 +251,79 @@ header {
 
 
 /* todo - create custom checkbox input */
-/* input[type="checkbox"] {
-  
-} */
+/* Custom checkbox: visually hides the native control and uses the label
+   (input + label) for the visible control. This keeps the input accessible
+   to keyboard and screen-reader users while allowing full visual control.
+
+   - The check icon comes from `assets/images/icon-check.svg`.
+   - Checked state uses an accent color (var(--blue-500) / theme aware).
+*/
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+}
+
+/* Visually hide the native checkbox but keep it interactive/focusable */
+.option input[type="checkbox"] {
+  position: absolute; /* takes it out of layout but still focusable */
+  opacity: 0;         /* hide visual appearance */
+  width: 1px; height: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); /* extra safety for older browsers */
+  white-space: nowrap;
+}
+
+/* The visible checkbox square is rendered using the label pseudo-element */
+.option input[type="checkbox"] + label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-100);
+  cursor: pointer;
+  user-select: none;
+}
+
+.option input[type="checkbox"] + label::before{
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 2px solid var(--neutral-200);
+  background-color: var(--neutral-0);
+  box-sizing: border-box;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+/* checked state — show the check icon; color adapts to theme */
+.option input[type="checkbox"]:checked + label::before{
+  background-color: var(--blue-500);
+  border-color: var(--blue-500);
+  background-image: url('../images/icon-check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
+}
+
+/* keyboard focus ring */
+.option input[type="checkbox"]:focus + label::before{
+  box-shadow: 0 0 0 4px rgba(128, 85, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+/* theme-specific adjustments: stronger contrast for dark theme */
+html[data-theme="dark"] .option input[type="checkbox"] + label::before{
+  border-color: var(--neutral-200);
+  background-color: var(--neutral-100);
+}
+
+html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
+  background-color: var(--blue-400);
+  border-color: var(--blue-400);
+}
 
 /* todo ends here */
+/* end custom checkbox */
 
 
 /* stats and density sections styles starts here */
@@ -431,8 +499,59 @@ header {
 }
 
 /* dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
+
+/* manual dark theme (applied to <html data-theme="dark"]) */
+/*
+  NOTE: The theme toggle in `js/script.js` sets `html[data-theme]` to
+  either 'dark' or 'light'. These custom property overrides make the
+  theme system centralized and easy to extend — add more component
+  styles that reference the custom properties and they'll follow the
+  active theme automatically.
+*/
+html[data-theme="dark"] {
+  /* swap light background to a dark surface */
+  --neutral-0: #0b0b0f; /* page background */
+  --neutral-100: #0f1116; /* surface / textarea background */
+  --neutral-200: #1f2126; /* borders, secondary surfaces */
+
+  /* primary text (light in dark mode) */
+  --neutral-600: #bfc3cf; /* muted text */
+  --neutral-700: #e6e6ea; /* primary body text */
+  --neutral-800: #f5f6f8; /* icons / accents */
+  --neutral-900: #ffffff; /* headings / strong text */
+
+  /* accent adjustments (slightly brighter in dark theme) */
+  --blue-400: #9b6ef8;
+  --blue-500: #8250f4;
+  --yellow-500: #ffb347;
+  --orange-500: #ff8b68;
+  --orange-800: #ff5b2a;
 }
+
+/* theme-aware styles */
+body {
+  background-color: var(--neutral-0);
+  color: var(--neutral-700);
+}
+
+.textarea-wrapper textarea{
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  border: 2px solid var(--neutral-200);
+}
+
+.theme-toggler-wrapper{
+  background-color: var(--neutral-100);
+}
+
+/* make toggler icon easier to see in dark mode */
+.theme-toggler-wrapper img{
+  display: block;
+  width: 60%;
+  height: auto;
+}
+
+/* tweak stat shapes so they blend better in dark mode */
+.stat-wrapper.purple{ background-color: var(--blue-400); }
+.stat-wrapper.yellow{ background-color: var(--yellow-500); }
+.stat-wrapper.orange{ background-color: var(--orange-500); }
