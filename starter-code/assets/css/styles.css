@@ -261,7 +261,7 @@ header {
   border-radius: var(--radius-6);
   min-width: 55px;
   height: 29px;
-  padding: var(--spacing-150);
+  padding: var(--spacing-050) var(--spacing-150);
   border: 1px solid var(--neutral-600);
   background-color: var(--neutral-0);
   color: var(--neutral-900);
@@ -428,6 +428,12 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
 
 /* stats and density sections styles ends here */
 
+
+/* density section*/
+
+.letter-density-bar{
+  display: flex;
+}
 
 
 
