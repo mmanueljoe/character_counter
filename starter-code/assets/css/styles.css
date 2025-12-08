@@ -163,14 +163,17 @@ header {
 
 .hero-title-wrapper{
   padding: var(--spacing-400) 0;
-  font-size: var(--text-preset-1-mb-size);
-  font-weight: var(--text-preset-1-mb-weight);
-  line-height: var(--text-preset-1-mb-line-height);
-  letter-spacing: var(--text-preset-1-mb-spacing);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.hero-title-wrapper h1{
+  font-size: var(--text-preset-1-mb-size);
+  font-weight: var(--text-preset-1-mb-weight);
+  line-height: var(--text-preset-1-mb-line-height);
+  letter-spacing: var(--text-preset-1-mb-spacing);
 }
 
 /* hero title styles ends here */
@@ -218,10 +221,24 @@ header {
   color: var(--neutral-900);
 }
 
+
+/* character count exceeded styles */
+.textarea-wrapper textarea.char-limit-exceeded{
+  border: 2px solid var(--orange-800);
+}
+
 .textarea-wrapper .options-wrapper{
   display: flex;
   flex-direction: column;
   gap: var(--spacing-075);
+}
+
+.character-limit-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--orange-800);
+  font-size: var(--text-preset-4-size);
 }
 
 
@@ -239,6 +256,31 @@ header {
     font-family: inherit;
     border: 1px solid var(--neutral-900);
 }
+
+#character-limit{
+  border-radius: var(--radius-6);
+  min-width: 55px;
+  height: 29px;
+  padding: var(--spacing-050) var(--spacing-150);
+  border: 1px solid var(--neutral-600);
+  background-color: var(--neutral-0);
+  color: var(--neutral-900);
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#character-limit:focus{
+  outline: none;
+  /* border: 2px solid var(--blue-500); */
+}
+
+
 
 
 
@@ -387,6 +429,12 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
 /* stats and density sections styles ends here */
 
 
+/* density section*/
+
+.letter-density-bar{
+  display: flex;
+}
+
 
 
 
@@ -412,6 +460,10 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   
   .hero-title-wrapper {
     padding: var(--spacing-500);
+    
+  }
+
+  .hero-title-wrapper h1{
     font-size: var(--text-preset-1-size);
     font-weight: var(--text-preset-1-weight);
     letter-spacing: var(--text-preset-1-spacing);
@@ -474,8 +526,14 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   
   .hero-title-wrapper {
     padding: var(--spacing-500);
+    
+  }
+
+  .hero-title-wrapper h1{
     font-size: var(--text-preset-1-size);
   }
+
+  
 }
 
 
@@ -485,7 +543,9 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
     padding: 2rem 20.24rem;
   }
   
-  .hero-title-wrapper{
+
+
+  .hero-title-wrapper h1{
     font-size: 5rem;
   }
   
