@@ -10,6 +10,7 @@
 
 (function () {
 	const THEME_KEY = 'theme';
+	
 	const ICONS = {
 		moon: './assets/images/icon-moon.svg',
 		sun: './assets/images/icon-sun.svg'
