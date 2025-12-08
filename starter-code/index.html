@@ -11,7 +11,7 @@
       href="./assets/images/favicon-32x32.png"
     />
 
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 
     <title>Character counter</title>
   </head>
@@ -26,7 +26,13 @@
         />
       </div>
 
-      <button type="button" data-theme-toggle aria-label="Toggle theme"  class="theme-toggler-wrapper" id="theme-toggler">
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Toggle theme"
+        class="theme-toggler-wrapper"
+        id="theme-toggler"
+      >
         <img
           src=""
           alt="Theme Icon"
@@ -38,7 +44,7 @@
 
     <div class="hero-title-wrapper">
       <h1 aria-label="Analyze your text in real-time">
-        Analyze your text <br><span class="nowrap">in real-time.</span>
+        Analyze your text <br /><span class="nowrap">in real-time.</span>
       </h1>
     </div>
 
@@ -51,9 +57,10 @@
           aria-label="Start typing here..."
         ></textarea>
 
-        <p class="character-limit-warning" aria-label="Character Limit Warning">
-          
-        </p>
+        <p
+          class="character-limit-warning"
+          aria-label="Character Limit Warning"
+        ></p>
 
         <div class="options-wrapper">
           <div class="options">
@@ -61,27 +68,29 @@
               <input id="exclude-spaces" type="checkbox" />
               <label for="exclude-spaces">Exclude Spaces</label>
             </div>
-              
+
             <div class="option">
               <input id="set-character-limit" type="checkbox" />
               <label for="set-character-limit">Set Character Limit</label>
-              <input id="character-limit" type="number" min="1" max="1000" aria-label="Set character limit" />
+              <input
+                id="character-limit"
+                type="number"
+                min="1"
+                max="1000"
+                aria-label="Set character limit"
+              />
             </div>
-            
           </div>
           <div class="reading-time-wrapper">
-            <span class="reading-time-label" id="reading-time">
-              
-            </span>
+            <span class="reading-time-label" id="reading-time"> </span>
           </div>
         </div>
       </section>
 
       <!-- stats and density section -->
       <section class="stats-density-wrapper">
-       
         <div class="stats-wrapper">
-           <!-- total characters stat -->
+          <!-- total characters stat -->
           <div class="stat-wrapper purple">
             <div class="stat">
               <p class="stat-value" id="char-count">00</p>
@@ -121,16 +130,11 @@
           <div id="letter-density">
             <!-- Letter density bars will be dynamically added here -->
           </div>
-          <span>No characters found. Start typing to see letter density.</span>
-          <button>
-            See more
-            <img src="" alt="">
-          </button>
         </div>
       </section>
     </main>
 
     <!-- scripts -->
-     <script src="./js/script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

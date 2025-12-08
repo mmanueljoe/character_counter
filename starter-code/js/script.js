@@ -179,7 +179,7 @@
 		const text = textarea.value;
 		const words = text.trim().split(/\s+/).filter(word => word.length > 0);
 		const wordCount = words.length;
-		const wordsPerMinute = 10; // average reading speed
+		const wordsPerMinute = 200; // average reading speed
 		const minutes = Math.ceil(wordCount / wordsPerMinute);
 		readingTimeEl.textContent = `Approx. reading time: ${minutes} minute${minutes !== 1 ? 's' : ''}`;
 	}
@@ -195,13 +195,35 @@
 	const textarea = document.getElementById('text-input');
 	const letterDensityEl = document.getElementById('letter-density');
 
-	if (!textarea || !letterDensityEl) return; // nothing to do
+	// exit if essential elements are missing
+	if (!textarea || !letterDensityEl){
+		// show default message if letter density element is missing
+		if(letterDensityEl){
+			letterDensityEl.innerHTML = '<p class="info-text">No characters found. Start typing to see letter density.</p>';
+		}
+		
+		return;
+	};
+
+
+
+	// render placeholder text when no characters are present
+	function renderPlaceholder(){
+		letterDensityEl.innerHTML = '<p class="info-text">No characters found. Start typing to see letter density.</p>';
+	}
+
 	/**
 	 * Update letter density (letters per 100 characters).
 	 */
 	function updateLetterDensity() {
-		const text = textarea.value;
+		const text = textarea.value || '';
 		const totalChars = text.length;
+
+		// if no characters, show placeholder
+		if(totalChars === 0){
+			renderPlaceholder();
+			return;
+		}
 
 		letterDensityEl.innerHTML = ''; // clear previous content
 
@@ -214,7 +236,10 @@
 		const freqMap = {};
 		lower.forEach(letter => {
 			freqMap[letter] = (freqMap[letter] || 0) + 1;
+	
 		});
+
+		// console.log(freqMap);
 
 		// convert to array of objects with percent
 		const entries = Object.entries(freqMap).map(([letter, count]) => {
@@ -224,11 +249,13 @@
 			}
 		});
 
-		// sle container for bars
+		// create container for bars
 		const listContainer = document.createElement('div');
 		listContainer.classList.add('density-list');
 
-		entries.forEach((item, index) => {
+		entries
+		.sort((a, b) => b.percent - a.percent) // sort descending by percent
+		.forEach((item) => {
 			const bar = document.createElement('div');
 
 			bar.classList.add('letter-density-bar');
@@ -239,7 +266,7 @@
 				<div class="density-bar-outer">
 					<div class="density-bar-inner" style="width: ${item.percent}%;"></div>
 				</div>
-				<span class="letter-percent">${item.percent.toFixed(2)}%</span>
+				<span class="letter-percent">${Math.floor(item.percent)} (${item.percent.toFixed(2)}%)</span>
 			`;
 			
 			listContainer.appendChild(bar);
@@ -250,8 +277,8 @@
 		// only see more if more than 5 entries
 		if(entries.length > 5){
 			const btn = document.createElement('button');
-			btn.innerHTML = `<i class="fa-solid fa-chevron-down"></i> See More`;
-			btn.classList.add('see-more-btn');
+			btn.innerHTML = `See More <img src="./assets/images/icon-arrow-down.svg" alt="See More Icon" />`;
+			btn.classList.add('more-less-btn');
 
 			let expanded = false;
 
@@ -263,16 +290,19 @@
 				bars.forEach((bar, idx) => {
 					if(idx < 5) return; // always show first 5
 
-					bar.style.display = expanded ? 'flex' : 'none';
+					bar.style.display = expanded ? 'grid' : 'none';
 				});
 
 				// toggle + icon
-				btn.innerHTML = expanded ? `<i class="fa-solid fa-chevron-up"></i> See Less` : `<i class="fa-solid fa-chevron-down"></i> See More`;
+				btn.innerHTML = expanded ? `See less <img src="./assets/images/icon-arrow-top.svg" alt="See More Icon" />` : `See more <img src="./assets/images/icon-arrow-down.svg" alt="See More Icon" />`;
 			});
 
 			letterDensityEl.appendChild(btn);
 		}
 	}
+
+	// if nothing is typed display text tell user to type something
+
 
 	textarea.addEventListener('input', updateLetterDensity);
 	// Initialize on page load
