@@ -96,7 +96,7 @@ export default function letterDensityLogic() {
     // only see more if more than 5 entries
     if (entries.length > 5) {
       const btn = document.createElement("button");
-      btn.innerHTML = `See More <img src="./assets/images/icon-arrow-down.svg" alt="See More Icon" />`;
+      btn.innerHTML = `See More <i class="fa-solid fa-angle-down arrow-custom-style"></i>`;
       btn.classList.add("more-less-btn");
 
       let expanded = false;
@@ -114,8 +114,8 @@ export default function letterDensityLogic() {
 
         // toggle + icon
         btn.innerHTML = expanded
-          ? 'See less <i class="fa-solid fa-angle-up"></i>'
-          : 'See more <i class="fa-solid fa-angle-down"></i>';
+          ? 'See less <i class="fa-solid fa-angle-up arrow-custom-style"></i>'
+          : 'See more <i class="fa-solid fa-angle-down arrow-custom-style"></i>';
       });
 
       letterDensityEl.appendChild(btn);
