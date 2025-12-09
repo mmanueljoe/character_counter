@@ -14,8 +14,6 @@ html{
 
 /* custom styles */
 :root {
-  /* font */
-
   /* colors */
   --neutral-0: #ffffff;
   --neutral-100: #f2f2f7;
@@ -70,8 +68,6 @@ html{
   --text-preset-4-line-height: 1.3;
   --text-preset-4-spacing: -0.0375rem;
   --text-preset-4-weight: 400;
-
-
 
   /* spacing */
   --spacing-0: 0;
@@ -154,7 +150,6 @@ header {
 
 /* --------------------------------- */
 
-
 .main-wrapper, .textarea-wrapper, .stats-density-wrapper{
   max-width: 100%;
 }
@@ -179,9 +174,7 @@ header {
 /* hero title styles ends here */
 
 
-
 /* --------------------------------- */
-
 
 
 /* textarea-wrapper section styles */
@@ -198,7 +191,6 @@ header {
   font-weight: var(--text-preset-3-weight);
   line-height: var(--text-preset-3-line-height);
   letter-spacing: var(--text-preset-3-spacing);
-  /* min-width: 300px; */
   min-height: 200px;
   max-width: 100%;
   background-color: var(--neutral-100);
@@ -277,13 +269,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #character-limit:focus{
   outline: none;
-  /* border: 2px solid var(--blue-500); */
 }
-
-
-
-
-
 
 /* textarea-wrapper section styles ends here*/
 
@@ -296,9 +282,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Custom checkbox: visually hides the native control and uses the label
    (input + label) for the visible control. This keeps the input accessible
    to keyboard and screen-reader users while allowing full visual control.
-
-   - The check icon comes from `assets/images/icon-check.svg`.
-   - Checked state uses an accent color (var(--blue-500) / theme aware).
 */
 
 .option {
@@ -309,10 +292,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Visually hide the native checkbox but keep it interactive/focusable */
 .option input[type="checkbox"] {
-  position: absolute; /* takes it out of layout but still focusable */
-  opacity: 0;         /* hide visual appearance */
+  position: absolute;
+  opacity: 0;   
   width: 1px; height: 1px; overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px); /* extra safety for older browsers */
+  clip: rect(1px, 1px, 1px, 1px); 
   white-space: nowrap;
 }
 
@@ -364,7 +347,6 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   border-color: var(--blue-400);
 }
 
-/* todo ends here */
 /* end custom checkbox */
 
 
@@ -441,46 +423,64 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   font-weight: var(--text-preset-4-weight);
 }
 
+
 .density-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* border: 2px solid black; */
   padding: 1rem 0;
 }
 
-
 .letter-density-bar {
+  --col-gap: 12px;
   display: grid;
-  grid-template-columns: auto 212px auto;
+  grid-template-columns: 10px 1fr max-content;
   align-items: center;
-  padding: var(--spacing-100) 0;
+  column-gap: var(--col-gap);
 }
 
-.letter-label, .letter-percent{
-  white-space: nowrap;
+/* Progress style with CSS variables for easy theming */
+.density-bar-outer {
+  --bar-height: 12px;
+  --bar-radius: var(--radius-full);
+  --bar-track: var(--neutral-100); 
+  --bar-fill:  var(--blue-400);
+
+  width: 100%; 
+  height: var(--bar-height);
+  appearance: none;
+  display: block;
+  border: 0;
 }
 
-.letter-percent{
-  text-align: right;
+/* Chrome/Edge/Safari */
+.density-bar-outer::-webkit-progress-bar {
+  background-color: var(--bar-track);
+  border-radius: var(--bar-radius);
+}
+.density-bar-outer::-webkit-progress-value {
+  background-color: var(--bar-fill);
+  border-radius: var(--bar-radius);
+  transition: width 240ms ease;
 }
 
-
-.density-bar-outer{
-  width: 100%;
-  height: 12px;
-  background-color: var(--neutral-100);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
+/* Firefox */
+.density-bar-outer {
+  background-color: var(--bar-track);
+  border-radius: var(--bar-radius);
+}
+.density-bar-outer::-moz-progress-bar {
+  background-color: var(--bar-fill);
+  border-radius: var(--bar-radius);
+  transition: width 240ms ease;
 }
 
-.density-bar-inner{
-  background-color: var(--blue-400);
-  height: 100%;
-  border-radius: var(--radius-full);
+.letter-label,
+.letter-percent {
+  margin: 0;
+  line-height: 1;
 }
+
 
 .more-less-btn {
   font-family: inherit;
@@ -494,15 +494,12 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   gap: 0.5rem;
 }
 
-
-
 /* letter density section styles ends here*/
 
 
-
+/* ------------------------------------------- */
 
 /* media queries for responsiveness */
-
 
 /* tablets */
 @media only screen and (min-width: 768px){
@@ -545,11 +542,9 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
     gap: var(--spacing-150);
   }
 
-  
   .stats-wrapper {
     flex-direction: row;
   }
-  
   
   .stat{
     padding: var(--spacing-150);
@@ -578,10 +573,24 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
     min-width: 150px;
   }
 
-
   .letter-density-bar {
-    grid-template-columns: auto 573px auto;
+    grid-template-columns: 10px 1fr max-content;
+    align-items: center;
+    column-gap: 1rem;
   }
+
+  .density-bar-outer {
+    --bar-height: 12px;
+    --bar-radius: var(--radius-full);
+    --bar-track: var(--neutral-100);
+    --bar-fill:  var(--blue-400);
+
+    width: 100%;
+    height: var(--bar-height);
+    appearance: none;
+    vertical-align: middle;
+    border: 0;
+}
 
 }
 
@@ -602,9 +611,23 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   }
 
   .letter-density-bar {
-    grid-template-columns: auto 859px auto;
+    grid-template-columns: 10px 1fr max-content; 
+    align-items: center;
+    column-gap: 1rem;
   }
 
+  .density-bar-outer {
+  --bar-height: 12px;
+  --bar-radius: var(--radius-full);
+  --bar-track: var(--neutral-100); 
+  --bar-fill:  var(--blue-400);
+
+    width: 100%;
+    height: var(--bar-height);
+    appearance: none;
+    vertical-align: middle;
+    border: 0;
+}
   
 }
 
@@ -614,8 +637,6 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   body{
     padding: 2rem 20.24rem;
   }
-  
-
 
   .hero-title-wrapper h1{
     font-size: 5rem;
@@ -628,28 +649,41 @@ html[data-theme="dark"] .option input[type="checkbox"]:checked + label::before{
   .stat-wrapper{
     flex-grow: 1;
   }
+
+  .letter-density-bar {
+    grid-template-columns: 20px minmax(200px, 1fr) max-content;
+    align-items: center;
+    column-gap: 1rem;
+  }
+
+  .density-bar-outer {
+  --bar-height: 12px;
+  --bar-radius: var(--radius-full);
+  --bar-track: var(--neutral-100);
+  --bar-fill:  var(--blue-400);
+
+    width: 100%;          
+    height: var(--bar-height);
+    appearance: none;
+    vertical-align: middle;
+    border: 0;
+  }
 }
 
 
 /* manual dark theme (applied to <html data-theme="dark"]) */
-/*
-  NOTE: The theme toggle in `js/script.js` sets `html[data-theme]` to
-  either 'dark' or 'light'. These custom property overrides make the
-  theme system centralized and easy to extend — add more component
-  styles that reference the custom properties and they'll follow the
-  active theme automatically.
-*/
+
 html[data-theme="dark"] {
   /* swap light background to a dark surface */
-  --neutral-0: #12131a; /* page background */
-  --neutral-100: #21222c; /* surface / textarea background */
-  --neutral-200: #2a2b37; /* borders, secondary surfaces */
+  --neutral-0: #12131a; 
+  --neutral-100: #21222c; 
+  --neutral-200: #2a2b37;
 
   /* primary text (light in dark mode) */
-  --neutral-600: #bfc3cf; /* muted text */
-  --neutral-700: #e4e4ef; /* primary body text */
-  --neutral-800: #f5f6f8; /* icons / accents */
-  --neutral-900: #f2f2f7; /* headings / strong text */
+  --neutral-600: #bfc3cf; 
+  --neutral-700: #e4e4ef;
+  --neutral-800: #f5f6f8;
+  --neutral-900: #f2f2f7;
 
 
   --blue-400: #d3a0fa;
@@ -683,10 +717,13 @@ html[data-theme="dark"] {
     height: auto;
   }
   
-
   .stat-wrapper {
     color: var(--neutral-0);
   }
 }
 
 
+
+
+
+ 
